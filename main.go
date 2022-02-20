@@ -20,7 +20,10 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	fmt.Println(<- c)
+	for i := 0; i < len(links); i++ {
+		// channel blocks for loop until message is received
+		fmt.Println((<-c))
+	}
 }
 
 func checkLink(link string, c chan string) {
